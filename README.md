@@ -10,12 +10,15 @@ The Fibonacci series is 0, 1, 1, 2, 3, 5, 8,... with the next number made by add
 
 This allows the clock to show the time in a 12 hour time format, so for: 
 12:00 is shown by the interface being drawn in white,   
-![Figure 2](images/figure2.jpg)   
-1:00 is shown by colouring one of the '1' rectangles in ```Blue```,   
+![Figure 2](images/figure2.jpg)  
+
+1:00 is shown by colouring one of the '1' rectangle in ```Blue```,   
 ![Figure 3](images/figure3.jpg)   
-2:00 has the two rectangle in ```Blue```,    
+
+2:00 has the '2' rectangle in ```Blue```,    
 ![Figure 4](images/figure4.jpg)   
-while 6:00 has both 1s, the 2 and the 3 in ```Blue```.   
+
+while 6:00 is a '1' and the 5 rectangle in ```Blue```.   
 ![Figure 5](images/figure5.jpg)   
 
 So far so good!
@@ -26,18 +29,25 @@ The minutes work in the same way, but since the clock is limited to 12 intervals
 Just like the hours the blocks are colour coded, this time using ``Red`` to signify the minute, so for:   
 0:00 to 0:04 the interface is solid ```White```,  
 0:05 to 0:09 one of the '1' rectangles is ```Red```,   
+
 ![Figure 6](images/figure6.jpg)   
-0:10 to 0:14 the '2' is ```Red```,   
+0:10 to 0:14 the '2' rectangle is ```Red```,   
+
 ![Figure 7](images/figure7.jpg)   
-and for 0:30 to 0:34 one '1',  and the '5' in ``Red``.   
+and for 0:30 to 0:34 one '1',  and the '5' rectangles in ``Red``.   
+
 ![Figure 8](images/figure8.jpg)   
 
 ## Getting the time for more involved times
 
 So far the time has been either all hours and no minutes or all minutes and no hours, when the time consists of a mix of minutes and hours, the rectangles are drawn as above except when a rectangle is used for both hours and minutes it is coloured ```Green```, so for 
 12:00 to 12:04 it is all white
-01:05 to 01:09 one of the '1' rectangles is ```Blue``` and the other is in ```Red```,   
+01:05 to 01:09 one of the '1' rectangles is ```Blue``` (for the 1 o' clock part) and the other '1' is in ```Red``` (for the minute part),   
 ![Figure 9](images/figure9.jpg)   
+
 02:35 to 02:39, the minutes are the 2 + 5 rectangle  ((2 + 5) * 5) to give 35 to 39 minutes and the hour is a single 2 recatngle. Since the 2 rectangle is used twice it is ```Green```, while the 5 rectangle is used just once for the minutes and so is ```Red```.   
-![Figure 9](images/figure9.jpg)   
+![Figure 10](images/figure10.jpg)   
+
+07:55 to 07:59, the minutes are the '1' + '2' + '3' + '5' rectangles  ((1 + 2 + 3 + 5) * 5 = 55) to give 55 to 59 minutes and the hour is the '2' and the '5' recatngles  (2 + 5 = 7). Since the '2' and the '5' rectangles are used twice it is ```Green```, while the '1' and the'3' rectangles are used just once for the minutes and so are ```Red```.   
+![Figure 11](images/figure11.jpg)   
  
