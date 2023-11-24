@@ -8,10 +8,14 @@ The Fibonacci series is 0, 1, 1, 2, 3, 5, 8,... with the next number made by add
 ## Getting the Hour
 
 This allows the clock to show the time in a 12 hour time format, so for: 
-12:00 is shown by the interface being drawn in white, ![Figure 2](images/figure2.jpg)
-1:00 is shown by colouring one of the '1' rectangles in ```Blue```, [Figure 3](images/figure3.jpg)
-2:00 has the two rectangle in ```Blue```, [Figure 4](images/figure4.jpg)
-while 6:00 has both 1s, the 2 and the 3 in ```Blue```.[Figure 5](images/figure5.jpg)
+12:00 is shown by the interface being drawn in white,   
+![Figure 2](images/figure2.jpg)   
+1:00 is shown by colouring one of the '1' rectangles in ```Blue```,   
+[Figure 3](images/figure3.jpg)   
+2:00 has the two rectangle in ```Blue```,    
+[Figure 4](images/figure4.jpg)   
+while 6:00 has both 1s, the 2 and the 3 in ```Blue```.   
+[Figure 5](images/figure5.jpg)   
 
 So far so good!
 
