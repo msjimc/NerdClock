@@ -3,7 +3,8 @@ The NerdClock came from a discussion with a PhD student who had seen one on the 
 
 ## How it works
 
-The Fibonacci series is 0, 1, 1, 2, 3, 5, 8,... with the next number made by adding the last two together. The values 1 to 5 are used to divide up the interface into blocks of the same proportions: the total area is 12 (1 + 1+ 2 + 3 + 5), so the value 1 is 1/12th of the interface while the value 5 is 5 /12th of the interface (Figure 1). 
+The Fibonacci series is 0, 1, 1, 2, 3, 5, 8,... with the next number made by adding the last two together. The values 1 to 5 are used to divide up the interface into blocks of the same proportions: the total area is 12 (1 + 1+ 2 + 3 + 5), so the value 1 is 1/12th of the interface while the value 5 is 5 /12th of the interface (Figure 1).    
+![Figure 1](images/figure1.jpg)  
 
 ## Getting the Hour
 
@@ -11,11 +12,11 @@ This allows the clock to show the time in a 12 hour time format, so for:
 12:00 is shown by the interface being drawn in white,   
 ![Figure 2](images/figure2.jpg)   
 1:00 is shown by colouring one of the '1' rectangles in ```Blue```,   
-1[Figure 3](images/figure3.jpg)   
+![Figure 3](images/figure3.jpg)   
 2:00 has the two rectangle in ```Blue```,    
-1[Figure 4](images/figure4.jpg)   
+![Figure 4](images/figure4.jpg)   
 while 6:00 has both 1s, the 2 and the 3 in ```Blue```.   
-1[Figure 5](images/figure5.jpg)   
+![Figure 5](images/figure5.jpg)   
 
 So far so good!
 
@@ -25,7 +26,7 @@ The minutes work in the same way, but since the clock is limited to 12 intervals
 Just like the hours the blocks are colour coded, this time using ``Red`` to signify the minute, so for:   
 0:00 to 0:04 the interface is solid ```White```,  
 0:05 to 0:09 one of the '1' rectangles is ```Red```,   
-1[Figure 6](images/figure6.jpg)   
+![Figure 6](images/figure6.jpg)   
 0:10 to 0:14 the '2' is ```Red```,   
 ![Figure 7](images/figure7.jpg)   
 and for 0:30 to 0:34 one '1',  and the '5' in ``Red``.   
