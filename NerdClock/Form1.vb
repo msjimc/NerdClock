@@ -53,7 +53,71 @@
             Fibonacci()
         ElseIf clockType = 2 Then
             Morsecode()
+        ElseIf clockType = 3 Then
+            Hexadecimal()
+        ElseIf clockType = 4 Then
+            Binary()
         End If
+    End Sub
+
+    Private Sub Hexadecimal()
+        Timer1.Interval = 1000
+        g.Clear(Color.White)
+        Dim currenttime As Date = Now
+        Dim hour As Integer = currenttime.Hour
+        Dim minutes As Integer = currenttime.Minute
+        Dim seconds As Integer = currenttime.Second
+
+        Dim hourHexi As String = hour.ToString("X").PadLeft(2, "0")
+        Dim minutesHexi As String = minutes.ToString("X").PadLeft(2, "0")
+        Dim secondHexi As String = seconds.ToString("X").PadLeft(2, "0")
+        Dim answer As String = hourHexi & " : " & minutesHexi + " : " + secondHexi
+
+        Dim f As Font = New Font(FontFamily.GenericSerif, 200)
+        Dim length As SizeF = g.MeasureString(answer, f)
+        Dim fontSize As Integer = 200
+
+        While length.Width > p1.Width - 10 AndAlso fontSize > 4.9
+            fontSize -= 1
+            f = New Font(FontFamily.GenericSansSerif, fontSize)
+            length = g.MeasureString(answer, f)
+        End While
+
+        Dim startPoint As Single = (p1.Width / 2) - (length.Width / 2)
+        g.DrawString(answer, f, Brushes.Black, startPoint, (p1.Height / 2) - (length.Height / 2))
+
+        p1.Image = btm
+        Text = Now.ToLongTimeString
+    End Sub
+
+    Private Sub Binary()
+        Timer1.Interval = 1000
+        g.Clear(Color.White)
+        Dim currenttime As Date = Now
+        Dim hour As Integer = currenttime.Hour
+        Dim minutes As Integer = currenttime.Minute
+        Dim seconds As Integer = currenttime.Second
+
+        Dim hourBinary As String = Convert.ToString(hour, 2).PadLeft(5, "0")
+        Dim minutesBinary As String = Convert.ToString(minutes, 2).PadLeft(6, "0")
+        Dim secondBinary As String = Convert.ToString(seconds, 2).PadLeft(6, "0")
+        Dim answer As String = hourBinary & " : " & minutesBinary + " : " + secondBinary
+
+        Dim f As Font = New Font(FontFamily.GenericSansSerif, 100)
+        Dim length As SizeF = g.MeasureString(answer, f)
+        Dim fontSize As Integer = 100
+
+        While length.Width > p1.Width - 10 AndAlso fontSize > 4.9
+            fontSize -= 1
+            f = New Font(FontFamily.GenericSerif, fontSize)
+            length = g.MeasureString(answer, f)
+        End While
+
+        Dim startPoint As Single = (p1.Width / 2) - (length.Width / 2)
+        g.DrawString(answer, f, Brushes.Black, startPoint, (p1.Height / 2) - (length.Height / 2))
+
+        p1.Image = btm
+        Text = Now.ToLongTimeString
     End Sub
 
     Private Sub Morsecode()
@@ -85,19 +149,19 @@
         Dim length As Integer = 0
         Dim todraw((code.Count * 2) - 1) As Single
         For index As Integer = 0 To todraw.Count - 1 Step 2
-            todraw(index) = (code(index / 2) * 1)
-            todraw(index + 1) = 1
+            todraw(index) = (code(index / 2) * 3)
+            todraw(index + 1) = 3
         Next
 
         For index As Integer = 0 To todraw.Count - 1 Step 10
             If index > 0 Then
-                todraw(index - 1) = 3
+                todraw(index - 1) = 9
             End If
         Next
 
         For index As Integer = 0 To todraw.Count - 1 Step 20
             If index > 0 Then
-                todraw(index - 1) = 6
+                todraw(index - 1) = 18
             End If
         Next
 
@@ -107,9 +171,9 @@
 
         Dim startPoint = (p1.Width / 2) - (length / 2)
         For index As Integer = 0 To todraw.Count - 1 Step 2
-            g.DrawRectangle(Pens.Black, New Rectangle(startPoint, (p1.Height - 10) / 2, todraw(index) * 3, 10))
-            g.FillRectangle(Brushes.Black, New Rectangle(startPoint, (p1.Height - 10) / 2, todraw(index) * 3, 10))
-            startPoint += (todraw(index) + todraw(index + 1)) * 3
+            g.DrawRectangle(Pens.Black, New Rectangle(startPoint, (p1.Height - 10) / 2, todraw(index), 10))
+            g.FillRectangle(Brushes.Black, New Rectangle(startPoint, (p1.Height - 10) / 2, todraw(index), 10))
+            startPoint += (todraw(index) + todraw(index + 1))
         Next
 
         p1.Image = btm
@@ -294,17 +358,37 @@
         End If
     End Sub
 
+    Private Sub RemoveCheck()
+        MorseCodeToolStripMenuItem.Checked = False
+        FibonacciToolStripMenuItem.Checked = False
+        HexadecimalToolStripMenuItem.Checked = False
+        BinaryToolStripMenuItem.Checked = False
+    End Sub
     Private Sub FibonacciToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FibonacciToolStripMenuItem.Click
         clockType = 1
         drawTime()
-        MorseCodeToolStripMenuItem.Checked = False
+        RemoveCheck()
         FibonacciToolStripMenuItem.Checked = True
     End Sub
 
     Private Sub MorseCodeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MorseCodeToolStripMenuItem.Click
         clockType = 2
         drawTime()
+        RemoveCheck()
         MorseCodeToolStripMenuItem.Checked = True
-        FibonacciToolStripMenuItem.Checked = False
+    End Sub
+
+    Private Sub HexadecimalToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HexadecimalToolStripMenuItem.Click
+        clockType = 3
+        drawTime()
+        RemoveCheck()
+        HexadecimalToolStripMenuItem.Checked = True
+    End Sub
+
+    Private Sub BinaryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BinaryToolStripMenuItem.Click
+        clockType = 4
+        drawTime()
+        RemoveCheck()
+        BinaryToolStripMenuItem.Checked = True
     End Sub
 End Class

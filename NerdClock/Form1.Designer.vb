@@ -31,6 +31,8 @@ Partial Class Form1
         Me.ClockTypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FibonacciToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MorseCodeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HexadecimalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BinaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.p1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -40,9 +42,10 @@ Partial Class Form1
         Me.p1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.p1.Location = New System.Drawing.Point(0, 27)
+        Me.p1.Location = New System.Drawing.Point(0, 52)
+        Me.p1.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
         Me.p1.Name = "p1"
-        Me.p1.Size = New System.Drawing.Size(500, 282)
+        Me.p1.Size = New System.Drawing.Size(1000, 542)
         Me.p1.TabIndex = 0
         Me.p1.TabStop = False
         '
@@ -56,18 +59,20 @@ Partial Class Form1
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClockTypeToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(500, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1000, 46)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'ClockTypeToolStripMenuItem
         '
-        Me.ClockTypeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FibonacciToolStripMenuItem, Me.MorseCodeToolStripMenuItem})
+        Me.ClockTypeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FibonacciToolStripMenuItem, Me.MorseCodeToolStripMenuItem, Me.HexadecimalToolStripMenuItem, Me.BinaryToolStripMenuItem})
         Me.ClockTypeToolStripMenuItem.Name = "ClockTypeToolStripMenuItem"
-        Me.ClockTypeToolStripMenuItem.Size = New System.Drawing.Size(75, 20)
+        Me.ClockTypeToolStripMenuItem.Size = New System.Drawing.Size(146, 38)
         Me.ClockTypeToolStripMenuItem.Text = "Clock type"
         '
         'FibonacciToolStripMenuItem
@@ -75,24 +80,37 @@ Partial Class Form1
         Me.FibonacciToolStripMenuItem.Checked = True
         Me.FibonacciToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
         Me.FibonacciToolStripMenuItem.Name = "FibonacciToolStripMenuItem"
-        Me.FibonacciToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.FibonacciToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
         Me.FibonacciToolStripMenuItem.Text = "Fibonacci"
         '
         'MorseCodeToolStripMenuItem
         '
         Me.MorseCodeToolStripMenuItem.Name = "MorseCodeToolStripMenuItem"
-        Me.MorseCodeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.MorseCodeToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
         Me.MorseCodeToolStripMenuItem.Text = "Morse code"
+        '
+        'HexadecimalToolStripMenuItem
+        '
+        Me.HexadecimalToolStripMenuItem.Name = "HexadecimalToolStripMenuItem"
+        Me.HexadecimalToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.HexadecimalToolStripMenuItem.Text = "Hexadecimal"
+        '
+        'BinaryToolStripMenuItem
+        '
+        Me.BinaryToolStripMenuItem.Name = "BinaryToolStripMenuItem"
+        Me.BinaryToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.BinaryToolStripMenuItem.Text = "Binary"
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(500, 309)
+        Me.ClientSize = New System.Drawing.Size(1000, 594)
         Me.Controls.Add(Me.p1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.MinimumSize = New System.Drawing.Size(50, 39)
+        Me.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.MinimumSize = New System.Drawing.Size(74, 71)
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.p1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -110,4 +128,6 @@ Partial Class Form1
     Friend WithEvents ClockTypeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FibonacciToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MorseCodeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents HexadecimalToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BinaryToolStripMenuItem As ToolStripMenuItem
 End Class
