@@ -42,10 +42,9 @@ Partial Class Form1
         Me.p1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.p1.Location = New System.Drawing.Point(0, 52)
-        Me.p1.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.p1.Location = New System.Drawing.Point(0, 27)
         Me.p1.Name = "p1"
-        Me.p1.Size = New System.Drawing.Size(1000, 542)
+        Me.p1.Size = New System.Drawing.Size(500, 282)
         Me.p1.TabIndex = 0
         Me.p1.TabStop = False
         '
@@ -59,12 +58,12 @@ Partial Class Form1
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.GripMargin = New System.Windows.Forms.Padding(2, 2, 0, 2)
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClockTypeToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1000, 46)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(3, 1, 0, 1)
+        Me.MenuStrip1.Size = New System.Drawing.Size(500, 24)
         Me.MenuStrip1.TabIndex = 1
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -72,45 +71,48 @@ Partial Class Form1
         '
         Me.ClockTypeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FibonacciToolStripMenuItem, Me.MorseCodeToolStripMenuItem, Me.HexadecimalToolStripMenuItem, Me.BinaryToolStripMenuItem})
         Me.ClockTypeToolStripMenuItem.Name = "ClockTypeToolStripMenuItem"
-        Me.ClockTypeToolStripMenuItem.Size = New System.Drawing.Size(146, 38)
+        Me.ClockTypeToolStripMenuItem.Size = New System.Drawing.Size(75, 22)
         Me.ClockTypeToolStripMenuItem.Text = "Clock type"
         '
         'FibonacciToolStripMenuItem
         '
         Me.FibonacciToolStripMenuItem.Checked = True
         Me.FibonacciToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.FibonacciToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.FibonacciToolStripMenuItem.Name = "FibonacciToolStripMenuItem"
-        Me.FibonacciToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.FibonacciToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.FibonacciToolStripMenuItem.Text = "Fibonacci"
         '
         'MorseCodeToolStripMenuItem
         '
+        Me.MorseCodeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.MorseCodeToolStripMenuItem.Name = "MorseCodeToolStripMenuItem"
-        Me.MorseCodeToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.MorseCodeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.MorseCodeToolStripMenuItem.Text = "Morse code"
         '
         'HexadecimalToolStripMenuItem
         '
+        Me.HexadecimalToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.HexadecimalToolStripMenuItem.Name = "HexadecimalToolStripMenuItem"
-        Me.HexadecimalToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.HexadecimalToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.HexadecimalToolStripMenuItem.Text = "Hexadecimal"
         '
         'BinaryToolStripMenuItem
         '
+        Me.BinaryToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.BinaryToolStripMenuItem.Name = "BinaryToolStripMenuItem"
-        Me.BinaryToolStripMenuItem.Size = New System.Drawing.Size(359, 44)
+        Me.BinaryToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.BinaryToolStripMenuItem.Text = "Binary"
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1000, 594)
+        Me.ClientSize = New System.Drawing.Size(500, 309)
         Me.Controls.Add(Me.p1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Margin = New System.Windows.Forms.Padding(6, 6, 6, 6)
-        Me.MinimumSize = New System.Drawing.Size(74, 71)
+        Me.MinimumSize = New System.Drawing.Size(45, 56)
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.p1, System.ComponentModel.ISupportInitialize).EndInit()

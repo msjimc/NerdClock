@@ -23,7 +23,7 @@
     Private isReSizing As Boolean
 
     Private clockType As Integer = 1
-
+    Private multipler As Single
     ' Private isLoading As Boolean = True
 
     Public Sub New()
@@ -44,7 +44,7 @@
         Timer1.Enabled = True
 
         Timer1.Interval = 60000 - (Now.Second * 1000)
-
+        multipler = getMultipler()
     End Sub
 
 
@@ -73,7 +73,7 @@
         Dim secondHexi As String = seconds.ToString("X").PadLeft(2, "0")
         Dim answer As String = hourHexi & " : " & minutesHexi + " : " + secondHexi
 
-        Dim f As Font = New Font(FontFamily.GenericSerif, 200)
+        Dim f As Font = New Font(FontFamily.GenericSansSerif, 200)
         Dim length As SizeF = g.MeasureString(answer, f)
         Dim fontSize As Integer = 200
 
@@ -109,7 +109,7 @@
 
         While length.Width > p1.Width - 10 AndAlso fontSize > 4.9
             fontSize -= 1
-            f = New Font(FontFamily.GenericSerif, fontSize)
+            f = New Font(FontFamily.GenericSansSerif, fontSize)
             length = g.MeasureString(answer, f)
         End While
 
@@ -146,38 +146,98 @@
         code.AddRange(GetMorseCode(firstSecond))
         code.AddRange(GetMorseCode(secondSecond))
 
-        Dim length As Integer = 0
+        Dim length As Integer = Integer.MaxValue
         Dim todraw((code.Count * 2) - 1) As Single
+
+        length = 0
         For index As Integer = 0 To todraw.Count - 1 Step 2
-            todraw(index) = (code(index / 2) * 3)
-            todraw(index + 1) = 3
+            todraw(index) = (code(index / 2) * multipler)
+            todraw(index + 1) = multipler
         Next
 
         For index As Integer = 0 To todraw.Count - 1 Step 10
             If index > 0 Then
-                todraw(index - 1) = 9
+                todraw(index - 1) = 3 * multipler
             End If
         Next
 
         For index As Integer = 0 To todraw.Count - 1 Step 20
             If index > 0 Then
-                todraw(index - 1) = 18
+                todraw(index - 1) = 6 * multipler
             End If
         Next
 
         For index As Integer = 0 To todraw.Count - 1
-            length += todraw(index) * 3
+            length += todraw(index)
         Next
 
-        Dim startPoint = (p1.Width / 2) - (length / 2)
+        Dim startPoint = 10 '(p1.Width / 2) - (length / 2)
         For index As Integer = 0 To todraw.Count - 1 Step 2
-            g.DrawRectangle(Pens.Black, New Rectangle(startPoint, (p1.Height - 10) / 2, todraw(index), 10))
-            g.FillRectangle(Brushes.Black, New Rectangle(startPoint, (p1.Height - 10) / 2, todraw(index), 10))
+            DrawRectangle(todraw(index), startPoint, (p1.Height - 10) / 2, 3 * multipler)
             startPoint += (todraw(index) + todraw(index + 1))
         Next
 
         p1.Image = btm
         Text = Now.ToLongTimeString
+    End Sub
+
+    Private Function getMultipler() As Single
+        multipler = 20
+        Dim code As New List(Of Single)
+
+        code.AddRange(zeroM)
+        code.AddRange(zeroM)
+        code.AddRange(zeroM)
+        code.AddRange(zeroM)
+        code.AddRange(zeroM)
+        code.AddRange(zeroM)
+        Dim todraw((code.Count * 2) - 1) As Single
+
+        Dim length As Integer = Integer.MaxValue
+
+        Do Until length < p1.Width - 20 OrElse multipler < 1.1
+            length = 0
+            For index As Integer = 0 To todraw.Count - 1 Step 2
+                todraw(index) = (code(index / 2) * multipler)
+                todraw(index + 1) = multipler
+            Next
+
+            For index As Integer = 0 To todraw.Count - 1 Step 10
+                If index > 0 Then
+                    todraw(index - 1) = 3 * multipler
+                End If
+            Next
+
+            For index As Integer = 0 To todraw.Count - 1 Step 20
+                If index > 0 Then
+                    todraw(index - 1) = 6 * multipler
+                End If
+            Next
+
+            For index As Integer = 0 To todraw.Count - 1
+                length += todraw(index)
+            Next
+            multipler -= 0.1
+        Loop
+
+        Return multipler
+
+    End Function
+
+    Private Sub DrawRectangle(length As Single, startX As Single, startY As Single, height As Single)
+
+        Dim rect As New Rectangle(startX, startY, length, height)
+        Dim cornerRadius As Integer = 2
+        Using path As New Drawing2D.GraphicsPath()
+            path.AddArc(rect.X, rect.Y, cornerRadius, cornerRadius, 180, 90)
+            path.AddArc(rect.X + rect.Width - cornerRadius, rect.Y, cornerRadius, cornerRadius, 270, 90)
+            path.AddArc(rect.X + rect.Width - cornerRadius, rect.Y + rect.Height - cornerRadius, cornerRadius, cornerRadius, 0, 90)
+            path.AddArc(rect.X, rect.Y + rect.Height - cornerRadius, cornerRadius, cornerRadius, 90, 90)
+            path.CloseFigure()
+            g.DrawPath(Pens.Black, path)
+            g.FillPath(Brushes.Black, path)
+        End Using
+
     End Sub
 
     Private Function GetMorseCode(value As Integer) As Single()
@@ -319,13 +379,13 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Text = Now.ToShortTimeString
-        'isLoading = False
     End Sub
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
         If isReSizing = True Then
             isReSizing = False
         Else
+            multipler = getMultipler()
             ResizeBlocks()
             Timer2.Enabled = False
             drawTime()
